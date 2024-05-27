@@ -14,9 +14,26 @@ horaDia2 = int(horario2[0])
 minutoDia2 = int(horario2[1])
 segundoDia2 = int(horario2[2])
 
-horasLiquidas = (valorDia2-valorDia1)*24 - horaDia1+horaDia2 + (minutoDia1+minutoDia2)/60 + (segundoDia1+segundoDia2)/3600
+diaFinal = valorDia2 - valorDia1
 
-diasTotais = horasLiquidas // 24
+horaFinal = horaDia2 - horaDia1
 
-print(diasTotais)
-#print("{} dia(s)\n{} hora(s)\n{} minuto(s)\n{} segundo(s)".format(valorDia2-valorDia1, horaTotal, 0, 0))
+if horaFinal < 0:
+    diaFinal -= 1
+    horaFinal += 24
+
+minutoFinal = minutoDia2 - minutoDia1
+
+if minutoFinal < 0:
+    horaFinal -= 1
+    minutoFinal += 60
+
+segundoFinal = segundoDia2 - segundoDia1
+
+if segundoFinal < 0:
+    minutoFinal -= 1
+    segundoFinal += 60
+
+if diaFinal < 0:
+    diaFinal == 0
+print("{} dia(s)\n{} hora(s)\n{} minuto(s)\n{} segundo(s)".format(diaFinal, horaFinal, minutoFinal, segundoFinal))
